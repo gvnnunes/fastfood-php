@@ -31,5 +31,11 @@ class DatabaseSeeder extends Seeder
             'password'      => bcrypt('123456'),
             'permission'    => 'app.manager'
         ]);
+
+        User::create([
+            'username'      => 'cliente',
+            'password'      => bcrypt('123456'),
+            'permission'    => 'app.user'
+        ]);
     }
 }

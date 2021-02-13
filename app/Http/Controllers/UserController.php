@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('dashboard');
+            return redirect()->route('user.dashboard');
         }
         return view('index');
     }
@@ -30,17 +30,19 @@ class UserController extends Controller
         ];
         
         $user_db = DB::table('users')->where('username', $data['username'])->first();
-           
         
-        if(is_null($user_db->username)){
-            return redirect()->back()->withInput()->withErrors('Usuário não existe no sistema.');
+        if(is_null($user_db)){
+            toastr()->warning('Usuário não existe no sistema.', 'Sistema');
+            return redirect()->back()->withInput();
         }
                 
         if(Auth::attempt($data, false)){
+            session()->put('permission' ,$user_db->permission);
             return redirect()->route('user.dashboard');
         }
         else{
-            return redirect()->back()->withInput()->withErrors('Senha incorreta!');
+            toastr()->warning('Senha incorreta!', 'Sistema');
+            return redirect()->back()->withInput();
         }
         
     }

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username', 50)->unique();
             $table->string('password', 255);
-            $table->string('permission', 12); // app.kitchen app.withdraw app.manager
+            $table->string('permission', 12); // app.kitchen app.withdraw app.manager app.user
             $table->rememberToken();
             $table->timestamps();
         });

@@ -177,6 +177,7 @@ return [
 
         // Custom providers
         Collective\Html\HtmlServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
     ],
 
     /*

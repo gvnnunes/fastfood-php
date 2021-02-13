@@ -14,7 +14,6 @@ class DashboardController extends Controller
         }
         return redirect()->route('user.index');
     }
-
     
     public function create()
     {
