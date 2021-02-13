@@ -1,0 +1,18 @@
+#dashboard-content{
+    display: block;
+    position: fixed;
+    background-color: #c0392b;
+    height: 100%;
+    width: 100%;
+}
+
+#content {
+    background-color: #fff;
+    text-align: center;
+    height: 90%;
+}
+
+#content-view{
+    height: 100%;
+    width: 100%;
+}
