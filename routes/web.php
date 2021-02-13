@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
+Route::post('/', ['as' => 'user.login', 'uses' => 'UserController@auth']);
+
+Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);

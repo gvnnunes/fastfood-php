@@ -16,8 +16,8 @@
                 <div id="content" class="col-lg-8 mx-auto my-auto shadow-lg">
                     <div id="content-view">
                         <h4>ACESSE O SISTEMA</h4>
-                        {!! Form::open() !!}
-                            @include('templates.forms.text', ['name' => 'user', 'attributes' => ['placeholder' => 'Usuário', 'class' => 'form-control']])
+                        {!! Form::open(['route' => 'user.login', 'method' => 'post']) !!}
+                            @include('templates.forms.text', ['name' => 'username', 'attributes' => ['placeholder' => 'Usuário', 'class' => 'form-control']])
                             @include('templates.forms.password', ['name' => 'password', 'attributes' => ['placeholder' => 'Senha', 'class' => 'form-control']])
                             @include('templates.forms.submit', ['name' => 'ENTRAR', 'attributes' => ['class' => 'btn', 'id' => 'btn-login']])
                         {!! Form::close() !!}
