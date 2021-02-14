@@ -11,7 +11,7 @@
 <body>
     <section id="dashboard-content">
         <div class="row h-100">
-            <div id="content" class="col-lg-8 mx-auto my-auto shadow-lg">
+            <div id="content" class="col-lg-8 mx-auto mt-5 shadow-lg">
                 @yield('content-view')
             </div>
         </div>
