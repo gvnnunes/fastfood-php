@@ -15,6 +15,7 @@
                 @yield('content-view')
             </div>
         </div>
-    </section>   
+    </section>
+    @yield('content-js')   
 </body>
 </html>

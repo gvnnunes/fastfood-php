@@ -21,6 +21,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 50);
+            $table->double('value', 8, 2);
+            $table->string('photo', 50);
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**

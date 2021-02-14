@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,6 +37,36 @@ class DatabaseSeeder extends Seeder
             'username'      => 'cliente',
             'password'      => bcrypt('123456'),
             'permission'    => 'app.user'
+        ]);
+
+        Product::create([
+            'name'      => 'Product1',
+            'value'     => '18.50',
+            'photo'     => 'images/hamburguer.jpg'
+        ]);
+
+        Product::create([
+            'name'      => 'Product2',
+            'value'     => '12.99',
+            'photo'     => 'images/hamburguer.jpg'
+        ]);
+
+        Product::create([
+            'name'      => 'Product3',
+            'value'     => '25.00',
+            'photo'     => 'images/hamburguer.jpg'
+        ]);
+
+        Product::create([
+            'name'      => 'Product4',
+            'value'     => '7.25',
+            'photo'     => 'images/hamburguer.jpg'
+        ]);
+
+        Product::create([
+            'name'      => 'Product5',
+            'value'     => '9.00',
+            'photo'     => 'images/hamburguer.jpg'
         ]);
     }
 }

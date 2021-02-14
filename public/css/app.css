@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@500&display=swap');
+
 #dashboard-content{
     display: block;
     position: fixed;
@@ -15,4 +17,9 @@
 #content-view{
     height: 100%;
     width: 100%;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    margin-top: 0.5em;
 }
