@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Auth;
 
 class DashboardController extends Controller
@@ -10,7 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('dashboard');
+            $products = DB::table('products')->get();
+
+            return view('dashboard', ['products' => $products]);
         }
         return redirect()->route('user.index');
     }
