@@ -17,3 +17,5 @@ Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
 Route::post('/', ['as' => 'user.login', 'uses' => 'UserController@auth']);
 
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
+
+Route::post('/add', ['as' => 'add.product', 'uses' => 'DashboardController@addProduct']);

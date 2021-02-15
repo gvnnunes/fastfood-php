@@ -17,6 +17,12 @@ class DashboardController extends Controller
         }
         return redirect()->route('user.index');
     }
+
+    public function addProduct(Request $request){
+        $value = DB::table('products')->where('id', $request->id)->value('value');
+        $order_value = $request->amount * $value;
+        return response()->json(['id' => $request->id, 'amount' => $request->amount , 'value' => $value,'order_value' => $order_value]);
+    }
     
     public function create()
     {
