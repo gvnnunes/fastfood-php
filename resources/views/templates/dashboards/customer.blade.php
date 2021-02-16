@@ -76,7 +76,7 @@
             });
         });
          
-        $('#btn-checkin').click(() => {
+        $('#btn-vieworder').click(() => {
             if(Cookies.get('product_cart') != undefined){
                 products = Cookies.get('product_cart').split('|');
                 $.ajax({
@@ -103,17 +103,39 @@
                         $('#modalCheckout').modal('show');
                     }
                 });
+            }
+            else{
+                toastr.info('É necessário adicionar pelo menos 1 item!')
             }            
+        });
+
+        $('#money-value').keyup(() => {
+            troco = parseFloat($('#money-value').val() - Cookies.get('order_value_total'))
+            if(troco >= 0){
+                $('#change-value').text('Troco: R$ ' + formatValue(troco.toFixed(2)));
+                $('#change-value').removeClass('d-none');
+                $('#btn-checkout').prop('disabled', false);
+            }
+            else{
+                $('#change-value').text('');
+                $('#change-value').addClass('d-none');
+                $('#btn-checkout').prop('disabled', true);
+            }          
         });
 
         $('#btn-cancel-order').click(() => {
             clearCookies();
             $('#order-value').text('Valor do pedido: ');
             $('#modalCheckout').modal('hide');
+            toastr.warning('Pedido cancelado!')
         });
 
+        /* Limpa os campos estáticos ao fechar o modal */
         $('#modalCheckout').on('hidden.bs.modal', function () {
             $('.modal-body').text(''); 
+            $('#money-value').val('');
+            $('#change-value').addClass('d-none');
+            $('#customer-name').val('');
         });
 
         function showOrderValueTotal(order_value){            

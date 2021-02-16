@@ -23,9 +23,15 @@
                             @include('templates.forms.withoutdiv.number', ['name' => 'money-value', 'attributes' => ['min' => '0', 'placeholder' => '', 'class' => 'form-control' ,'id' => 'money-value']])
                         </div>                        
                     </div>
+                    <div class="modal-give-change">
+                        <h2 id="change-value" class="d-none"></h2>
+                    </div>
+                    <div class="modal-customer-name">
+                        @include('templates.forms.withoutdiv.text', ['name' => 'customer-name', 'attributes' => ['placeholder' => 'Digite o seu nome (Opcional)', 'class' => 'form-control', 'id' => 'customer-name', 'maxlength' => '20']])
+                    </div>
                     <div class="modal-footer">
                     <button type="button" class="btn" id="btn-cancel-order">CANCELAR PEDIDO</button>
-                    <button type="button" class="btn" id="btn-checkout">CONFIRMAR PEDIDO</button>
+                    <button type="button" class="btn" id="btn-checkout" disabled>CONFIRMAR PEDIDO</button>
                     </div>
                 </div>
                 </div>
@@ -66,7 +72,7 @@
                     <h2 id="order-value">Valor do pedido: </h2>
                 </div>
                 <div id="checkout">
-                    @include('templates.forms.button', ['name' => 'VER PEDIDO', 'attributes' => ['class' => 'btn', 'id' => 'btn-checkin']])
+                    @include('templates.forms.button', ['name' => 'VER PEDIDO', 'attributes' => ['class' => 'btn', 'id' => 'btn-vieworder']])
                 </div>        
             </div>
         @endif

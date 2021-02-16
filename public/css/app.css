@@ -136,7 +136,7 @@ h1{
     padding-top: 1.5em;
 }
 
-#footer #checkout #btn-checkin{
+#footer #checkout #btn-vieworder{
     background-color: #c0392b;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
@@ -212,6 +212,51 @@ h1{
 }
 
 .modal-payment .form-group #money-value:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.modal-give-change{
+    text-align: center;
+}
+
+.modal-give-change #change-value{
+    margin-bottom: 0.5em;
+}
+
+.modal-content h2{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.modal-customer-name{
+    text-align: center;
+}
+
+.modal-customer-name #customer-name{
+    width: 80%;
+    display: inline-block;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #d9d9d9;
+    transition: 0.5s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.modal-customer-name #customer-name::placeholder{
+    color: #bdc3c7;
+    text-transform: none;
+}
+
+.modal-customer-name #customer-name:hover{
+    border-bottom: 2px solid #e74c3c;
+}
+
+.modal-customer-name #customer-name:focus{
     outline: none;
     box-shadow: none;
 }
