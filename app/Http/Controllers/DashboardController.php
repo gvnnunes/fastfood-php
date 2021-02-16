@@ -18,10 +18,25 @@ class DashboardController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function addProduct(Request $request){
+    public function addProductToCart(Request $request){
         $value = DB::table('products')->where('id', $request->id)->value('value');
         $order_value = $request->amount * $value;
         return response()->json(['id' => $request->id, 'amount' => $request->amount , 'value' => $value,'order_value' => $order_value]);
+    }
+
+    public function showProductsOnCart(Request $request){
+        $products = $request->products;
+        $product_list = [];
+        for($i = 0; $i < count($request->products); $i++){            
+            $product = explode(" ", $products[$i]);
+            $product_id = $product[0];
+            $product_amount = $product[1];
+            $product_total_value = $product[2];
+            $product_name = DB::table('products')->where('id', $product_id)->value('name');
+            $product_information = $product_id . ' ' . $product_name . ' ' . $product_amount. ' ' . $product_total_value;
+            array_push($product_list, $product_information);
+        }
+        return response()->json($product_list);
     }
     
     public function create()

@@ -29,8 +29,11 @@
 @endforeach
 
 @section('content-js')
+    <!-- JS Cookie CDN -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script> 
+        /* JQuery e funções do sistema */
+
         $(document).ready(() => {
             if(Cookies.get('order_value_total_formatted') != undefined){
                 $('#order-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
@@ -42,9 +45,10 @@
             amount = $('#amount-' + id).val();
 
             $.ajax({
-                url: "{{ route('add.product') }}",
+                url: "{{ route('add.cart.product') }}",
                 method: 'post',
                 data: {
+                    '_token': '{{ csrf_token() }}',
                     'id': id,
                     'amount': amount
                 },
@@ -68,18 +72,60 @@
                         Cookies.set('order_value_total', order_value_total);
                         showOrderValueTotal(order_value_total);
                     }
-                    console.log(Cookies.get());
                 },
             });
         });
          
-        $('#btn-checkout').click(() => {
-            console.log('checkin');
+        $('#btn-checkin').click(() => {
+            if(Cookies.get('product_cart') != undefined){
+                products = Cookies.get('product_cart').split('|');
+                $.ajax({
+                    url: "{{ route('show.cart.products') }}",
+                    method: 'post',
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        'products': products                
+                    },
+                    success:function(response){
+                        for(i = 0; i < response.length; i++){
+                            product_information = response[i].split(' ');
+                            product_id = product_information[0];
+                            product_name = product_information[1];
+                            product_amount = product_information[2];
+                            product_total_value = product_information[3];
+                            product_total_value = formatValue(product_total_value);
+                            $('.modal-body').append('<div class="form-group"><h4>' + product_amount + 'x ' + product_name + ' R$ ' + product_total_value + '</h4> <button type="button" class="btn" id="' + product_id + '">Remover</button><br></div>');
+                            if(i != response.length-1){
+                                $('.modal-body').append('<hr>');
+                            }
+                        }
+                        $('#modal-total-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
+                        $('#modalCheckout').modal('show');
+                    }
+                });
+            }            
         });
 
-        function showOrderValueTotal(order_value){
-            order_value_total_formatted = order_value.toString().split('.');
+        $('#btn-cancel-order').click(() => {
+            clearCookies();
+            $('#order-value').text('Valor do pedido: ');
+            $('#modalCheckout').modal('hide');
+        });
 
+        $('#modalCheckout').on('hidden.bs.modal', function () {
+            $('.modal-body').text(''); 
+        });
+
+        function showOrderValueTotal(order_value){            
+            order_value_total_formatted = formatValue(order_value);
+            Cookies.set('order_value_total_formatted', order_value_total_formatted);
+            $('#order-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
+        }
+
+        /* Funções gerais */
+
+        function formatValue(value){
+            order_value_total_formatted = value.toString().split('.');
             if(order_value_total_formatted[1] != undefined){                        
                 num_lines = order_value_total_formatted[1].length;
                 
@@ -93,17 +139,15 @@
             else{
                 order_value_total_formatted = order_value_total_formatted[0] + ',00';
             }
-
-            Cookies.set('order_value_total_formatted', order_value_total_formatted);
-            $('#order-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
+            return order_value_total_formatted;
         }
 
         function clearCookies(){
+            Cookies.remove('PHPSESSID');
             Cookies.remove('XSRF-TOKEN');
             Cookies.remove('product_cart');
             Cookies.remove('order_value_total');
             Cookies.remove('order_value_total_formatted');
         }
-
     </script>
 @endsection

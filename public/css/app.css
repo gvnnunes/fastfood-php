@@ -142,3 +142,46 @@ h1{
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
+
+#modal-title{
+    font-family: 'Oswald', sans-serif;
+}
+
+.modal-body{
+    padding-bottom: 0;
+}
+
+.modal-body h4{
+    display: inline-block;
+    margin-left: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;    
+}
+
+.modal-body button{
+    float: right;
+    margin-right: 2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #c0392b;
+    color: #fff;
+}
+
+.modal-body-value{
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.modal-footer #btn-cancel-order{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #c0392b;
+    color: #fff;
+}
+
+.modal-footer #btn-checkout{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #2ecc71;
+    color: #fff;
+}
