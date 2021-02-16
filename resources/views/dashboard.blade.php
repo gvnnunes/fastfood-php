@@ -68,7 +68,7 @@
     @if (session('permission'))
         @if (session('permission') == 'app.user')
             <div id="footer">
-                <div id="order">
+                <div id="order-footer">
                     <h2 id="order-value">Valor do pedido: </h2>
                 </div>
                 <div id="checkout">

@@ -54,11 +54,11 @@
                 },
                 success:function(response){
                     if(Cookies.get('product_cart') == undefined){
-                        Cookies.set('product_cart', response['id'] + '-' + response['amount'] + '-' + response['order_value']);
+                        Cookies.set('product_cart', response['id'] + '-' + response['amount'] + '-' + response['order_value'] + '-' + response['name']);
                     }
                     else{
                         product_cart = Cookies.get('product_cart');
-                        Cookies.set('product_cart', product_cart + '|' + response['id'] + '-' + response['amount'] + '-' + response['order_value']);
+                        Cookies.set('product_cart', product_cart + '|' + response['id'] + '-' + response['amount'] + '-' + response['order_value'] + '-' + response['name']);
                     }
 
                     if(Cookies.get('order_value_total') == undefined){

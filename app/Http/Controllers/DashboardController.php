@@ -13,16 +13,18 @@ class DashboardController extends Controller
     {
         if(Auth::check()){
             $products = DB::table('products')->get();
-
-            return view('dashboard', ['products' => $products]);
+            $orders = DB::table('orders')->get();
+            
+            return view('dashboard', ['products' => $products, 'orders' => $orders]);
         }
         return redirect()->route('user.index');
     }
 
     public function addProductToCart(Request $request){
+        $name = DB::table('products')->where('id', $request->id)->value('name');
         $value = DB::table('products')->where('id', $request->id)->value('value');
         $order_value = $request->amount * $value;
-        return response()->json(['id' => $request->id, 'amount' => $request->amount , 'value' => $value,'order_value' => $order_value]);
+        return response()->json(['id' => $request->id, 'amount' => $request->amount , 'value' => $value,'order_value' => $order_value, 'name' => $name]);
     }
 
     public function showProductsOnCart(Request $request){
@@ -48,7 +50,12 @@ class DashboardController extends Controller
         $change_value = $request->change_value;
         $customer_name = $request->customer_name;
         for ($i = 0; $i < count($products); $i++){
-            $product_list .= $products[$i] . '|';
+            if($i == count($products)-1){
+                $product_list .= $products[$i];
+            }
+            else{
+                $product_list .= $products[$i] . '|';
+            } 
         }
         $order_id = DB::table('orders')->insertGetId([
             'products' => $product_list,
