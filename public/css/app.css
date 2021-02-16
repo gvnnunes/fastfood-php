@@ -185,3 +185,33 @@ h1{
     background-color: #2ecc71;
     color: #fff;
 }
+
+.modal-payment{
+    text-align: center;
+}
+
+.modal-payment .form-group #money-value{
+    width: 50%;
+    display: inline-block;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #d9d9d9;
+    transition: 0.5s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #27ae60;
+    text-align: center;
+}
+
+.modal-payment .form-group #money-value::placeholder{
+    color: #bdc3c7;
+}
+
+.modal-payment .form-group #money-value:hover{
+    border-bottom: 2px solid #e74c3c;
+}
+
+.modal-payment .form-group #money-value:focus{
+    outline: none;
+    box-shadow: none;
+}

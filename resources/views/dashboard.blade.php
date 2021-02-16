@@ -17,6 +17,12 @@
                         <hr class="mt-0">
                         <h2 id="modal-total-value"></h2>
                     </div>
+                    <div class="modal-payment">
+                        <div class="form-group">
+                            <h2>Pagamento em dinheiro: </h2> 
+                            @include('templates.forms.withoutdiv.number', ['name' => 'money-value', 'attributes' => ['min' => '0', 'placeholder' => '', 'class' => 'form-control' ,'id' => 'money-value']])
+                        </div>                        
+                    </div>
                     <div class="modal-footer">
                     <button type="button" class="btn" id="btn-cancel-order">CANCELAR PEDIDO</button>
                     <button type="button" class="btn" id="btn-checkout">CONFIRMAR PEDIDO</button>

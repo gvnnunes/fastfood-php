@@ -94,7 +94,7 @@
                             product_amount = product_information[2];
                             product_total_value = product_information[3];
                             product_total_value = formatValue(product_total_value);
-                            $('.modal-body').append('<div class="form-group"><h4>' + product_amount + 'x ' + product_name + ' R$ ' + product_total_value + '</h4> <button type="button" class="btn" id="' + product_id + '">Remover</button><br></div>');
+                            $('.modal-body').append('<div class="form-group"><h4>' + product_amount + 'x ' + product_name + ' R$ ' + product_total_value + '</h4> <button type="button" class="btn btn-remove-product" id="' + product_id + '">Remover</button><br></div>');
                             if(i != response.length-1){
                                 $('.modal-body').append('<hr>');
                             }
