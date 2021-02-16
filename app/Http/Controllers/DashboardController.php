@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Auth;
 
 class DashboardController extends Controller
@@ -49,7 +50,16 @@ class DashboardController extends Controller
         for ($i = 0; $i < count($products); $i++){
             $product_list .= $products[$i] . '|';
         }
-        return response()->json($product_list);
+        $order_id = DB::table('orders')->insertGetId([
+            'products' => $product_list,
+            'order_value_total' => $order_value_total,
+            'payment_value' => $money_value,
+            'change_value' => $change_value,
+            'customer_name' => $customer_name,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        return response()->json($order_id);
     }
     
     public function create()

@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('products', 300);
             $table->double('order_value_total', 8, 2);
-            $table->double('money_value', 8, 2);
+            $table->double('payment_value', 8, 2);
+            $table->string('payment_method', 5)->default('money');
             $table->double('change_value', 8, 2);
             $table->string('customer_name', 20)->nullable();
             $table->string('status', 9)->default('preparing');

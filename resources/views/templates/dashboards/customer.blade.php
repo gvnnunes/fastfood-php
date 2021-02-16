@@ -21,7 +21,7 @@
         
         <div id="product-content">
             <div class="form-group">
-                @include('templates.forms.withoutdiv.range', ['name' => 'amount', 'start' => '1', 'end' => '10', 'selected' => '1' ,'attributes' => ['class' => 'form-control', 'id' => 'amount-' . $product->id], ])
+                @include('templates.forms.withoutdiv.range', ['name' => 'amount', 'start' => '1', 'end' => '10', 'selected' => '1' ,'attributes' => ['class' => 'form-control product-amount', 'id' => 'amount-' . $product->id], ])
                 @include('templates.forms.withoutdiv.button', ['name' => 'Adicionar', 'attributes' => ['value' => $product->id, 'class' => 'btn', 'id' => 'btn-add-' . $product->id]])
             </div>
         </div>
@@ -101,12 +101,16 @@
                         }
                         $('#modal-total-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
                         $('#btn-checkout').prop('disabled', true);
-                        $('#modalCheckout').modal('show');
+                        $('#modal-checkout').modal('show');
                     }
                 });
             }
             else{
-                toastr.info('É necessário adicionar pelo menos 1 item!')
+                swal({
+                    title: "Aviso",
+                    text: "É necessário adicionar pelo menos 1 item!",
+                    icon: "warning"
+                });
             }            
         });
 
@@ -143,7 +147,15 @@
                     'customer_name': customer_name
                 },
                 success:function(response){
-                    console.log(response);
+                    clearCookies();
+                    $('#modal-checkout').modal('hide');
+                    $('#order-value').text('Valor do pedido: ');
+                    $('.product-amount').val('1');
+                    swal({
+                        title: "Pedido confirmado!",
+                        text: "Seu número: " + response,
+                        icon: "success",
+                    })
                 }
             });
         });
@@ -151,12 +163,27 @@
         $('#btn-cancel-order').click(() => {
             clearCookies();
             $('#order-value').text('Valor do pedido: ');
-            $('#modalCheckout').modal('hide');
-            toastr.warning('Pedido cancelado!')
+            $('.product-amount').val('1');
+            $('#modal-checkout').modal('hide');
+            swal({
+                title: "Pedido cancelado!",
+                icon: "success"
+            });
+        });
+
+        
+
+        $('.modal-body').on('click', 'button', (value) => {    
+            id = $(value.target).attr('id');
+            swal({
+                title: "Aviso",
+                text: "Essa função ainda não foi implementada!",
+                icon: "warning"
+            });
         });
 
         /* Limpa os campos estáticos ao fechar o modal */
-        $('#modalCheckout').on('hidden.bs.modal', function () {
+        $('#modal-checkout').on('hidden.bs.modal', function () {
             $('.modal-body').text(''); 
             $('#money-value').val('');
             $('#change-value').addClass('d-none');

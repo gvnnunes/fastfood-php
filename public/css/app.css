@@ -260,3 +260,11 @@ h1{
     outline: none;
     box-shadow: none;
 }
+
+.swal-title{
+    font-size: 32px;
+}
+
+.swal-text{
+    font-size: 20px;
+}
