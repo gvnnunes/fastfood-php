@@ -54,11 +54,11 @@
                 },
                 success:function(response){
                     if(Cookies.get('product_cart') == undefined){
-                        Cookies.set('product_cart', response['id'] + ' ' + response['amount'] + ' ' + response['order_value']);
+                        Cookies.set('product_cart', response['id'] + '-' + response['amount'] + '-' + response['order_value']);
                     }
                     else{
                         product_cart = Cookies.get('product_cart');
-                        Cookies.set('product_cart', product_cart + '|' + response['id'] + ' ' + response['amount'] + ' ' + response['order_value']);
+                        Cookies.set('product_cart', product_cart + '|' + response['id'] + '-' + response['amount'] + '-' + response['order_value']);
                     }
 
                     if(Cookies.get('order_value_total') == undefined){
@@ -88,7 +88,7 @@
                     },
                     success:function(response){
                         for(i = 0; i < response.length; i++){
-                            product_information = response[i].split(' ');
+                            product_information = response[i].split('-');
                             product_id = product_information[0];
                             product_name = product_information[1];
                             product_amount = product_information[2];
@@ -100,6 +100,7 @@
                             }
                         }
                         $('#modal-total-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
+                        $('#btn-checkout').prop('disabled', true);
                         $('#modalCheckout').modal('show');
                     }
                 });
@@ -121,6 +122,30 @@
                 $('#change-value').addClass('d-none');
                 $('#btn-checkout').prop('disabled', true);
             }          
+        });
+
+        $('#btn-checkout').click(() => {
+            products = Cookies.get('product_cart').split('|');
+            order_value_total = Cookies.get('order_value_total');
+            money_value = $('#money-value').val();
+            change_value = $('#change-value').text().split(' ');
+            change_value = change_value[2].replace(',', '.');
+            customer_name = $('#customer-name').val().toUpperCase();
+            $.ajax({
+                url: "{{ route('checkout') }}",
+                method: 'post',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'products': products,
+                    'order_value_total': order_value_total,
+                    'money_value': money_value,
+                    'change_value': change_value,
+                    'customer_name': customer_name
+                },
+                success:function(response){
+                    console.log(response);
+                }
+            });
         });
 
         $('#btn-cancel-order').click(() => {

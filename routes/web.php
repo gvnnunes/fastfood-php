@@ -18,5 +18,6 @@ Route::post('/', ['as' => 'user.login', 'uses' => 'UserController@auth']);
 
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
-Route::post('/add', ['as' => 'add.cart.product', 'uses' => 'DashboardController@addProductToCart']);
+Route::post('/addproductcart', ['as' => 'add.cart.product', 'uses' => 'DashboardController@addProductToCart']);
 Route::post('/cartproducts', ['as' => 'show.cart.products', 'uses' => 'DashboardController@showProductsOnCart']);
+Route::post('/checkout', ['as' => 'checkout', 'uses' => 'DashboardController@checkout']);
