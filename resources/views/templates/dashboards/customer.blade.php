@@ -35,9 +35,14 @@
         /* JQuery e funções do sistema */
 
         $(document).ready(() => {
+            clearCookies();
+            /* 
+            **** Para que este bloco de código funcione precisa comentar o clearCookies() ****
+            
             if(Cookies.get('order_value_total_formatted') != undefined){
                 $('#order-value').text('Valor do pedido: R$ ' + Cookies.get('order_value_total_formatted'));
             }
+            */
         });
 
         $('#content-view').on('click', 'button', (value) => {    
