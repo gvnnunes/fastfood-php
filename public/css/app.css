@@ -37,8 +37,7 @@ h1{
 
 /* Customer CSS */
 
-#product,
-#order{
+#product{
     height: 50%;
     display: inline-block;    
     margin-top: 0.75em;
@@ -274,8 +273,20 @@ h1{
 
 /* Orders CSS */
 
-#order-content{
-    margin-top: 1.5em;
+#order{
+    height: 55%;
+    display: inline-block;    
+    margin-top: 0.75em;
+    margin-left: 0.5em;
+    border: 1px solid #c0392b;
+}
+
+#order-content .form-group{
+    display: inline-block;
+}
+
+#order-content .form-group h5{
+    margin-top: 0;
 }
 
 #order-content .btn{

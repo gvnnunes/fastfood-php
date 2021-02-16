@@ -14,7 +14,7 @@ class DashboardController extends Controller
         if(Auth::check()){
             $products = DB::table('products')->get();
             $orders = DB::table('orders')->get();
-            
+            //dd($orders);
             return view('dashboard', ['products' => $products, 'orders' => $orders]);
         }
         return redirect()->route('user.index');
@@ -51,10 +51,10 @@ class DashboardController extends Controller
         $customer_name = $request->customer_name;
         for ($i = 0; $i < count($products); $i++){
             if($i == count($products)-1){
-                $product_list .= $products[$i];
+                $product_list .= substr($products[$i], 2);
             }
             else{
-                $product_list .= $products[$i] . '|';
+                $product_list .= substr($products[$i], 2) . '|';
             } 
         }
         $order_id = DB::table('orders')->insertGetId([
