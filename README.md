@@ -15,7 +15,7 @@
 
 - Na pasta raiz do projeto execute o comando `php artisan migrate --seed` para criar as tabelas e popular o banco.
 
-#### Credenciais para acessar o sistema:
+### Credenciais para acessar o sistema:
 
 - **Usuário:** cliente
 - **Senha:** 123456
