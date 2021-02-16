@@ -40,31 +40,31 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name'      => 'Product1',
+            'name'      => 'Produto 1',
             'value'     => '18.50',
             'photo'     => 'images/hamburguer.jpg'
         ]);
 
         Product::create([
-            'name'      => 'Product2',
+            'name'      => 'Produto 2',
             'value'     => '12.99',
             'photo'     => 'images/hamburguer.jpg'
         ]);
 
         Product::create([
-            'name'      => 'Product3',
+            'name'      => 'Produto 3',
             'value'     => '25.00',
             'photo'     => 'images/hamburguer.jpg'
         ]);
 
         Product::create([
-            'name'      => 'Product4',
+            'name'      => 'Produto 4',
             'value'     => '7.25',
             'photo'     => 'images/hamburguer.jpg'
         ]);
 
         Product::create([
-            'name'      => 'Product5',
+            'name'      => 'Produto 5',
             'value'     => '9.00',
             'photo'     => 'images/hamburguer.jpg'
         ]);
