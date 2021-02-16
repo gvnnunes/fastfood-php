@@ -38,7 +38,6 @@ h1{
 /* Customer CSS */
 
 #product{
-    height: 50%;
     display: inline-block;    
     margin-top: 0.75em;
     margin-left: 0.5em;
@@ -274,7 +273,6 @@ h1{
 /* Orders CSS */
 
 #order{
-    height: 55%;
     display: inline-block;    
     margin-top: 0.75em;
     margin-left: 0.5em;
