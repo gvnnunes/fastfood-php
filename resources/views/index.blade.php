@@ -12,8 +12,9 @@
 </head>
 <body>
     <section id="login-content">
-            <div class="row h-100">
-                <div id="content" class="col-lg-8 mx-auto my-auto shadow-lg">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-lg-12 mx-auto my-auto shadow-lg">
                     <div id="content-view">
                         <h4>ACESSE O SISTEMA</h4>
                         {!! Form::open(['route' => 'user.login', 'method' => 'post']) !!}
@@ -22,11 +23,11 @@
                             @include('templates.forms.submit', ['name' => 'ENTRAR', 'attributes' => ['class' => 'btn', 'id' => 'btn-login']])
                         {!! Form::close() !!}
                     </div>
-                    <div id="img-content">
-                        <img src="../images/frontpage.jpg">
-                    </div>
+                    <div id="img-content"></div>
                 </div>
             </div>
+        </div>
+            
     </section>
 </body>
 @jquery

@@ -37,7 +37,8 @@ h1{
 
 /* Customer CSS */
 
-#product{
+#product,
+#order{
     display: inline-block;    
     margin-top: 0.75em;
     margin-left: 0.5em;
@@ -272,13 +273,6 @@ h1{
 
 /* Orders CSS */
 
-#order{
-    display: inline-block;    
-    margin-top: 0.75em;
-    margin-left: 0.5em;
-    border: 1px solid #c0392b;
-}
-
 #order-content .form-group{
     display: inline-block;
 }
@@ -291,4 +285,8 @@ h1{
     background-color: #2ecc71;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+}
+
+#order-content .form-group h5{
+    margin-bottom: 0.5em;
 }

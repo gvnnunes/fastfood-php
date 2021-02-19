@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@500&display=swap');
 
 #login-content {
-    display: block;
-    position: fixed;
+    display: flex;
     background-color: #c0392b;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-height: 100vh;    
+    align-items: center;
 }
 
 #content {
@@ -21,9 +21,12 @@
 }
 
 #img-content {
-    float: right;
+    position: absolute;
+    right: 0;
     width: 60%;
     height: 100%;
+    background-image: url('../images/frontpage.jpg');
+    background-size: cover;
 }
 
 h4{
@@ -61,9 +64,25 @@ h4{
 #btn-login{    
     background-color: #c0392b;
     margin-top: 1.5em;
+    margin-bottom: 2em;
     color: #fff;
-    width: 50%;
     border-radius: 2em;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+}
+
+@media (min-width: 1600px){
+    #btn-login{
+        margin-bottom: 3.5em;
+    }
+}
+
+@media (max-width: 767px){
+    #content-view {
+        width: 100%;
+    }
+    
+    #img-content {
+        display: none;
+    }
 }
