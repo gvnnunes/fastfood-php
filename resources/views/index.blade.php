@@ -26,8 +26,7 @@
                     <div id="img-content"></div>
                 </div>
             </div>
-        </div>
-            
+        </div>            
     </section>
 </body>
 @jquery

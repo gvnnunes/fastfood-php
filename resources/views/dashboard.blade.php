@@ -43,7 +43,7 @@
 @section('content')
     @if (session('permission'))
         @if (session('permission') == 'app.user')
-            <div id="c-content" class="col-lg-8 mx-auto mt-5 shadow-lg">
+            <div id="c-content" class="col-lg-11 mx-auto mt-5 shadow-lg">
         @else
             <div id="content" class="col-lg-8 mx-auto my-auto shadow-lg">
         @endif
