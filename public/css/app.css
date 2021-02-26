@@ -107,53 +107,64 @@ h1{
 }
 
 #footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    height: 5em;
     background-color: #2ecc71;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    height: 80px;
 }
 
 #footer #order-footer{
-    width: 50%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+#footer #order-footer h2{
+    width: 80%;
     float: left;
-    padding-left: 10em;
-    padding-top: 1.5em;   
 }
 
-@media (max-width: 1150px){
-    #footer #order-footer{
-        width: 50%;
-        float: left;
-        padding-left: 5em;
-        padding-top: 1.5em;   
-    }
-}
-
-@media (max-width: 1000px){
-    #footer #order-footer{
-        width: 50%;
-        float: left;
-        padding-left: 0em;
-        padding-top: 1.5em; 
-        text-align: center;  
-    }
-}
-
-#footer #checkout{
-    width: 50%;
+#footer #order-footer .form-group{
+    width: 15%;
     float: right;
-    text-align: center;
-    padding-top: 1.5em;
+    margin-bottom: 0;
 }
 
-#footer #checkout #btn-vieworder{
+#footer #order-footer #btn-vieworder{
     background-color: #c0392b;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+}
+
+@media (max-width: 767px){
+    #footer{
+        height: auto;
+        
+    }
+
+    #footer #order-footer{
+        display: block;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    
+    #footer #order-footer h2{
+        width: 100%;
+        float: none;
+        margin-top: 0.5em;
+    }
+
+    #footer #order-footer .form-group{
+        width: 100%;
+        float: none;
+        margin-top: 0.5em;
+        margin-bottom: 1em;
+    }
 }
 
 #modal-title{
@@ -166,6 +177,7 @@ h1{
 
 .modal-body h4{
     display: inline-block;
+    margin-top: 0.2em;
     margin-left: 1.5em;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;    
@@ -185,6 +197,23 @@ h1{
     margin-bottom: 1em;
 }
 
+@media (max-width: 495px){
+    .modal-body .form-group{
+        text-align: center;
+    }
+
+    .modal-body h4{
+        display: block;
+        margin-left: 0;
+    }
+
+    .modal-body button{
+        float: none;
+        margin-right: 0;        
+    }
+
+}
+
 .modal-footer #btn-cancel-order{
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -197,6 +226,19 @@ h1{
     font-weight: bold;
     background-color: #2ecc71;
     color: #fff;
+}
+
+@media (max-width: 444px){
+    .modal-footer{
+        display: block;
+        text-align: center;
+    }
+
+    .modal-footer #btn-checkout{
+        margin-top: 0.25em;
+        margin-left: 0;
+        width: 100%;
+    }
 }
 
 .modal-payment{

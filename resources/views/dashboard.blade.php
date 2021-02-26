@@ -68,12 +68,14 @@
     @if (session('permission'))
         @if (session('permission') == 'app.user')
             <div id="footer">
-                <div id="order-footer">
-                    <h2 id="order-value">Valor do pedido: </h2>
-                </div>
-                <div id="checkout">
-                    @include('templates.forms.button', ['name' => 'VER PEDIDO', 'attributes' => ['class' => 'btn', 'id' => 'btn-vieworder']])
-                </div>        
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div id="order-footer">
+                            <h2 id="order-value">Valor do pedido: </h2>                                                           
+                            @include('templates.forms.button', ['name' => 'VER PEDIDO', 'attributes' => ['class' => 'btn', 'id' => 'btn-vieworder']])                   
+                        </div>                        
+                    </div>
+                </div>       
             </div>
         @endif
     @endif
